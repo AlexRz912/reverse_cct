@@ -1,0 +1,9 @@
+#pragma once
+
+#define MAX_CCT_INTERVAL_MS 1200
+#define MIN_CCT_INTERVAL_MS 800
+
+#define MIN_NOGO_SIGNAL 180
+#define MAX_NOGO_SIGNAL 350
+
+#define MAX_STREAK_COUNT 4
