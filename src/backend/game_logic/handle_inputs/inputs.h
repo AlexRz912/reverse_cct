@@ -2,5 +2,5 @@
 
 #include "../../data/structs.h"
 
-void captureInputDuringWait(int durationMs);
+int captureInputDuringWait(int durationMs);
 

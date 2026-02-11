@@ -33,6 +33,7 @@ int main() {
 
     while(1) 
     {
+        int timeLeft = 0;
         if (streakReachedMax(errorStreak)) 
         {
             errorStreak = 0;
@@ -58,24 +59,24 @@ int main() {
         if (noGoSignal == 3) {
             
             int nogoTimeBeforeEnd = getRand(MAX_NOGO_SIGNAL, MIN_NOGO_SIGNAL);
+            
             int timeBeforeSignal = reverseCCTGame->interval - nogoTimeBeforeEnd;
             
             if (timeBeforeSignal < 0) timeBeforeSignal = 0; 
             
             
-            captureInputDuringWait(timeBeforeSignal);
+            timeLeft = captureInputDuringWait(timeBeforeSignal);
             
             // Affiche DON'T
             printf("DON'T\n");
             
             // Partie 2 : Attente restante
-            captureInputDuringWait(nogoTimeBeforeEnd);
+            timeLeft += captureInputDuringWait(nogoTimeBeforeEnd);
         } else {
             // Pas de signal, attente complète
-            captureInputDuringWait(reverseCCTGame->interval);
+            timeLeft = captureInputDuringWait(reverseCCTGame->interval);
         }
-        
-        printf("You answered: %d\n", reverseCCTGame->answer);
+    
         slideNumbers();
         
         // Gestion de l'unité uniquement si addition >= 10
@@ -94,10 +95,12 @@ int main() {
             validStreak = increaseStreak(validStreak);
             errorStreak = 0;
         } else {
-            printf("wrong answer\n");
             errorStreak = increaseStreak(errorStreak);
             validStreak = 0;
         }
+        Sleep(timeLeft);
+        system("cls");
+        
     }
     free(reverseCCTGame);
     return 0;

@@ -3,11 +3,12 @@
 #include <windows.h>
 #include "inputs.h"
 
-void captureInputDuringWait(int durationMs) {
+int captureInputDuringWait(int durationMs) {
     int elapsed = 0;
     int step = 10;
     
-    if (reverseCCTGame->answer != -1) return;
+    // Si une réponse est déjà là, retourne le temps qu'on aurait dû attendre
+    if (reverseCCTGame->answer != -1) return durationMs;
 
     while (elapsed < durationMs) {
         if (_kbhit()) {
@@ -20,10 +21,13 @@ void captureInputDuringWait(int durationMs) {
 
             if (key >= '0' && key <= '9') {
                 reverseCCTGame->answer = key - '0';
-                break; 
+                // Retourne le temps restant dans cette période
+                return durationMs - elapsed;
             }
         }
         Sleep(step);
         elapsed += step;
     }
+    // Temps complètement écoulé, rien à attendre
+    return 0;
 }
