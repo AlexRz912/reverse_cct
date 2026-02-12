@@ -4,6 +4,13 @@
 #include <time.h>
 #include <stdio.h>
 #include <conio.h>
+#include <windows.h>
+#include <windowsx.h>
+#include <mmsystem.h>
+
+#pragma comment(lib,"winmm.lib")
+
+#define PLAY_SOUND(filename) PlaySound("./src/frontend/sound/" filename, NULL, SND_SYNC | SND_FILENAME)
 
 #include "./src/backend/data/constants.h"
 #include "./src/backend/data/structs.h"
@@ -52,7 +59,39 @@ int main() {
         int noGoSignal = getRand(4, 0);
         
         printf("previous: %d\n", reverseCCTGame->previousNum);
-        printf("next: %d\n", reverseCCTGame->newNum);
+        switch(reverseCCTGame->newNum) {
+            case 1:
+                PLAY_SOUND("1.wav"); 
+                break;
+            case 2:
+                PLAY_SOUND("2.wav");
+                break;
+            case 3:
+                PLAY_SOUND("3.wav"); 
+                break;
+            case 4:
+                PLAY_SOUND("4.wav"); 
+                break;
+            case 5:
+                PLAY_SOUND("5.wav");
+                break;
+            case 6:
+                PLAY_SOUND("6.wav");
+                break;
+            case 7:
+                PLAY_SOUND("7.wav");
+                break;
+            case 8:
+                PLAY_SOUND("8.wav");
+                break;
+            case 9:
+                PLAY_SOUND("9.wav");
+                break;
+            default:
+                // code par défaut
+                break;
+        }
+        
         
         // Réinitialisation de la réponse avant le début de l'intervalle
         reverseCCTGame->answer = -1;
