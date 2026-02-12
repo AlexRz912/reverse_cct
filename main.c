@@ -10,7 +10,7 @@
 
 #pragma comment(lib,"winmm.lib")
 
-#define PLAY_SOUND(filename) PlaySound("./src/frontend/sound/" filename, NULL, SND_SYNC | SND_FILENAME)
+#define PLAY_SOUND(filename) PlaySound("./sound/" filename, NULL, SND_SYNC | SND_FILENAME)
 
 #include "./src/backend/data/constants.h"
 #include "./src/backend/data/structs.h"
