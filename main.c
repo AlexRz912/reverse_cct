@@ -27,13 +27,14 @@ int main() {
 
     getGame(startIntervalMs, minIntervalMs);
 
-    int stimuliCount = 0;
+    int previousAnswerCorrect = 1;
     int validStreak = 0;
     int errorStreak = 0;
+
     while(1) 
     {
-        DWORD loopStartTime = GetTickCount();
-        int timeLeft = 0;
+        if (previousAnswerCorrect) { printf("correct answer\n"); }
+        else { printf("wrong answer\n"); }
         if (streakReachedMax(errorStreak)) 
         {
             errorStreak = 0;
@@ -50,14 +51,10 @@ int main() {
         addNextToPrevious();
         
         int noGoSignal = getRand(4, 0);
-        
-        
-        while (_kbhit()) { //Buffer input clearing, to avoid capturing digit for next interval
-            _getch();
-        }
+        //clearInputBuffer();
         
         playNumber(reverseCCTGame->newNum);
-        // Réinitialisation de la réponse avant le début de l'intervalle
+        
         reverseCCTGame->answer = -1;
         if (noGoSignal == 3) {
             
@@ -70,41 +67,28 @@ int main() {
             Sleep(timeBeforeSignal);
             captureInputDuringSleep();
             
-            // Affiche DON'T
-            printf("DON'T\n");
-            
-            // Partie 2 : Attente restante
+            playNoGoSound();
+
             Sleep(nogoTimeBeforeEnd);            
             captureInputDuringSleep();
         } else {
-            // Pas de signal, attente complète
+            
             Sleep(reverseCCTGame->interval);
             captureInputDuringSleep();
         }
-        
         slideNumbers();
-        // Gestion de l'unité uniquement si addition >= 10
-        if (reverseCCTGame->addition >= 10 && reverseCCTGame->answer != -1) {
-             if (reverseCCTGame->answer == (reverseCCTGame->addition % 10)) {
-                 reverseCCTGame->answer += 10;
-            }
-        }
-        
-        if ((!noGoSignalHappened(noGoSignal) && isCorrectAnswer(reverseCCTGame->addition, reverseCCTGame->answer)) || 
+        if ((!noGoSignalHappened(noGoSignal) && isCorrectAnswer((reverseCCTGame->addition % 10), reverseCCTGame->answer)) || 
            (noGoSignalHappened(noGoSignal) && userDidNotAnswer(reverseCCTGame->answer)))
         {
-            printf("correct answer\n");
+            previousAnswerCorrect = 1;
             validStreak = increaseStreak(validStreak);
             errorStreak = 0;
         } else {
+            previousAnswerCorrect = 0;
             errorStreak = increaseStreak(errorStreak);
             validStreak = 0;
         }
-        Sleep(timeLeft);
-        
-         // Pause pour voir le résultat
         system("cls");
-        printf("%d", timeLeft);
     }
     free(reverseCCTGame);
     return 0;

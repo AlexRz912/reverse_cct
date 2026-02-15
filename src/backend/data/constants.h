@@ -1,6 +1,6 @@
 #pragma once
 
-#define MAX_CCT_INTERVAL_MS 1200
+#define MAX_CCT_INTERVAL_MS 1600
 #define MIN_CCT_INTERVAL_MS 500
 
 #define MIN_NOGO_SIGNAL 300

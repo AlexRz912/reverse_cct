@@ -5,3 +5,4 @@
 #pragma comment(lib,"winmm.lib")
 
 void playNumber(int newNumber);
+void playNoGoSound();

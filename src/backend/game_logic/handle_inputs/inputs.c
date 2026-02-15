@@ -11,5 +11,4 @@ void captureInputDuringSleep() {
             reverseCCTGame->answer = key - '0';
         }
     }
-    // Temps complètement écoulé, rien à attendre
 }
