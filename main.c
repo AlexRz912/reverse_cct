@@ -15,16 +15,13 @@
 
 int main() {
     srand(time(NULL));
-
-    int startIntervalMs = MAX_CCT_INTERVAL_MS;
-    int minIntervalMs = MIN_CCT_INTERVAL_MS;
-
+        int startIntervalMs = MAX_CCT_INTERVAL_MS; 
+        int minIntervalMs   = MIN_CCT_INTERVAL_MS;
     initGame();
     if (isAllocFailing()) {
         printf("program failure");
         return 1;
     }
-
     getGame(startIntervalMs, minIntervalMs);
 
     int previousAnswerCorrect = 1;
@@ -51,7 +48,6 @@ int main() {
         addNextToPrevious();
         
         int noGoSignal = getRand(4, 0);
-        //clearInputBuffer();
         
         playNumber(reverseCCTGame->newNum);
         

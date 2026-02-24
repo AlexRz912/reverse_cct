@@ -9,14 +9,14 @@ struct NoGoSignal {
 };
 
 struct Game {
-    struct NoGoSignal noGo;
-    int previousNum;
-    int newNum;
-    int addition;
-    int answer;
-    int interval;
+    struct NoGoSignal noGo; 
+    int previousNum; 
+    int newNum; 
+    int addition; 
+    int answer; 
+    int interval; 
     
-};
+}; 
 
 extern struct Game * reverseCCTGame;
 

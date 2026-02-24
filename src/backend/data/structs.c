@@ -2,6 +2,7 @@
 
 struct Game * reverseCCTGame = NULL;
 
+
 void initGame() {
     reverseCCTGame = malloc(sizeof(struct Game));
 }
