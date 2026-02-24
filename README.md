@@ -49,28 +49,6 @@
 - **Error Streak** (4 consecutive errors) : Increases interval (decreases difficulty)
 - Difficulty Range : 500 ms (hardest) to 1600 ms (easiest)
 
-## Technical Challenges
-
-### 1. **Memory Management**
-- **Challenge** : Properly allocate and deallocate persistent game structures
-- **Solution** : Global pointer `reverseCCTGame` with allocation failure checking (`isAllocFailing()`)
-- **Complexity** : Tracking the complete lifecycle of the game structure throughout execution
-
-### 2. **Precise Timing Management**
-- **Challenge** : Maintain precise time intervals while capturing user input asynchronously
-- **Solution** : Use `Sleep()` for delays and the `_kbhit()` function to asynchronously query the message queue for keypresses
-- **Complexity** : Synchronization between audio playback, delays, and responsive input capture on Windows
-
-### 3. **Modular C Architecture**
-- **Challenge** : Organize complex C code into maintainable and reusable modules
-- **Solution** : Hierarchical directory structure separating concerns:
-  - `data/` : Structures and constants
-  - `game_logic/` : Core task logic
-  - `handle_inputs/` : Input management
-  - `handle_sound/` : Audio handling
-- **Complexity** : Managing interdependencies and explicit memory allocation across modules
-
-
 ## Project Structure
 
 ```
@@ -133,6 +111,12 @@ gcc -o reverse_cct main.c src/backend/data/structs.c src/backend/game_logic/game
 
 - **Keys 0-9** : Enter your response (enter the units digit of your running sum)
 - The game runs in an infinite loop; press `Ctrl+C` to exit
+
+## Technical Challenges
+
+- **Memory Management** : Dynamic allocation and deallocation of game structures
+- **Precise Timing** : Synchronization between audio, delays, and input capture
+- **Modular Architecture** : Organizing C code into maintainable, reusable modules
 
 ## Technologies Used
 
