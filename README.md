@@ -9,20 +9,24 @@
 - **CCT** is designed to help with emotional regulation by decreasing rumination, depression symptoms, and impulsivity
 - **GNG/SST** helps with controlling addiction issues and behavioral change
 
-**CCT**
-`https://cct1.netlify.app/`
-**ICT**
-`https://www.psytoolkit.org/experiment-library/experiment_go-no-go.html`
-`https://www.psytoolkit.org/experiment-library/experiment_stopsignal.html`
+### Resources
 
-**Scientific research**
--CCT task  : 
-`https://www.sciencedirect.com/science/article/abs/pii/S016503272101421X?via%3Dihub`
-`https://www.sciencedirect.com/science/article/abs/pii/S0005796718300457?via%3Dihub`
-`https://dl.acm.org/doi/10.1145/3675094.3677591`
+**CCT Tool**
+- https://cct1.netlify.app/
 
+**Inhibitory Control Tasks**
+- https://www.psytoolkit.org/experiment-library/experiment_go-no-go.html
+- https://www.psytoolkit.org/experiment-library/experiment_stopsignal.html
 
--ICT tasks : `https://www.sciencedirect.com/science/article/pii/S0195666324000163`
+### Scientific Research
+
+**CCT Task**
+- https://www.sciencedirect.com/science/article/abs/pii/S016503272101421X?via%3Dihub
+- https://www.sciencedirect.com/science/article/abs/pii/S0005796718300457?via%3Dihub
+- https://dl.acm.org/doi/10.1145/3675094.3677591
+
+**Inhibitory Control Tasks**
+- https://www.sciencedirect.com/science/article/pii/S0195666324000163
 
 ### Key Features
 
